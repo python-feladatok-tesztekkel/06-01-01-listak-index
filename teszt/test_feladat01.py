@@ -6,8 +6,24 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
 import feladatok
 
-class TestOsszeg(TestCase):
+class TestEUTag(TestCase):
     def test_feladat01(self):
-        aktualis = feladatok.feladat01()
-        elvart = 0
-        self.assertEqual(elvart, aktualis, "Szöveg")
+        keresett="Észtország"
+        aktualis = feladatok.eu_tag_e(keresett)
+        elvart = True
+        self.assertEqual(elvart, aktualis, keresett+" EU tagságát rosszul határozta meg")
+    def test_feladat02(self):
+        keresett="Magyarország"
+        aktualis = feladatok.eu_tag_e(keresett)
+        elvart = True
+        self.assertEqual(elvart, aktualis, keresett+" EU tagságát rosszul határozta meg")
+    def test_feladat03(self):
+        keresett="Szlovákia"
+        aktualis = feladatok.eu_tag_e(keresett)
+        elvart = True
+        self.assertEqual(elvart, aktualis, keresett+" EU tagságát rosszul határozta meg")
+    def test_feladat04(self):
+        keresett="USA"
+        aktualis = feladatok.eu_tag_e(keresett)
+        elvart = False
+        self.assertEqual(elvart, aktualis, keresett+" EU tagságát rosszul határozta meg")
